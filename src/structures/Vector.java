@@ -52,6 +52,24 @@ public class Vector {
 
     }
 
+    public int peek() {
+        if (size == 0) {
+            throw new IllegalStateException();
+        }
+
+        return vector[0];
+    }
+
+    public void swap(int positionOne, int positionTwo){
+        int temp = vector[positionOne];
+        vector[positionOne] = vector[positionTwo];
+        vector[positionTwo] = temp;
+    }
+
+    public void replace(int position, int value){
+        vector[position] = value;
+    }
+
     public Integer getAt(int position) {
         if (position < size && position >= 0) {
             return vector[position];
