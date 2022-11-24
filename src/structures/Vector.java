@@ -26,6 +26,18 @@ public class Vector {
         }
     }
 
+    public void add(int... elements) {
+        for (int e : elements) {
+            increaseCapacity();
+            if (size < vector.length) {
+                vector[size] = e;
+                size++;
+            } else {
+                throw new RuntimeException("error adding element out of vector bounds");
+            }
+        }
+    }
+
     public void add(int position, int element){
         if (!(position < size && position >= 0)) {
             throw new IllegalArgumentException("element out of vector range");
