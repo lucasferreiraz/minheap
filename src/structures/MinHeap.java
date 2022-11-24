@@ -2,7 +2,23 @@ package structures;
 
 public class MinHeap {
 
-    private int capacity;
+    private Vector list = new Vector(0);
+
+    public MinHeap(Vector list) {
+        heapify(list);
+    }
+
+    public void add(int item){
+        list.add(item);
+        heapifyUp();
+    }
+    public void heapifyUp(){
+        int index = list.getSize() - 1;
+        while(hasParent(index) && parent(index) > list.getAt(index)){
+            list.swap(getParentIndex(index), index);
+            index = getParentIndex(index);
+        }
+    }
 
     private Vector list = new Vector(capacity);
 
