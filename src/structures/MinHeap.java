@@ -12,6 +12,18 @@ public class MinHeap {
         list.add(item);
         heapifyUp();
     }
+
+    private void heapify(Vector rawList){
+
+        if (rawList.getSize() == 0) {
+            throw new IllegalStateException();
+        }
+
+        for(int i = 0; i < rawList.getSize(); i++){
+            add(rawList.getAt(i));
+        }
+    }
+
     public void heapifyUp(){
         int index = list.getSize() - 1;
         while(hasParent(index) && parent(index) > list.getAt(index)){
