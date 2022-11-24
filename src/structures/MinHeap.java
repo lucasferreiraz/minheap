@@ -13,6 +13,20 @@ public class MinHeap {
         heapifyUp();
     }
 
+    public int poll(){
+        if (list.getSize() == 0) {
+            throw new IllegalStateException();
+        }
+
+        int firstElement = list.getAt(0);
+        int lastElement = list.getAt(list.getSize() - 1);
+        list.replace(0, lastElement);
+        list.remove(list.getSize() - 1);
+        heapifyDown();
+        return firstElement;
+
+    }
+
     private void heapify(Vector rawList){
 
         if (rawList.getSize() == 0) {
@@ -32,10 +46,22 @@ public class MinHeap {
         }
     }
 
-    private Vector list = new Vector(capacity);
+    public void heapifyDown(){
+        int index = 0;
+        while (hasLeftChild(index)){
+            int smallerChildIndex = getLeftChildIndex(index);
+            if (hasRightChild(index) && rightChild(index) < leftChild(index)) {
+                smallerChildIndex = getRightChildIndex(index);
+            }
 
-    public MinHeap(int capacity) {
-        this.capacity = capacity;
+            if (list.getAt(index) < list.getAt(smallerChildIndex)){
+                break;
+            } else {
+                list.swap(index, smallerChildIndex);
+            }
+
+            index = smallerChildIndex;
+        }
     }
 
     //Auxiliar methods
@@ -73,6 +99,11 @@ public class MinHeap {
 
     private boolean hasParent(int index) {
         return getParentIndex(index) < list.getSize();
+    }
+
+    @Override
+    public String toString() {
+        return list.toString();
     }
 
 }
