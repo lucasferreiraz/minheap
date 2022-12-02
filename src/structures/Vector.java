@@ -101,6 +101,10 @@ public class Vector {
         return size;
     }
 
+    public Integer[] getVector(){
+        return vector;
+    }
+
     public void increaseCapacity(){
         if(size == vector.length){
             Integer newVector[] = new Integer[size + 1];

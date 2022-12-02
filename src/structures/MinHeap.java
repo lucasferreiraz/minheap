@@ -5,7 +5,7 @@ public class MinHeap {
     private Vector list = new Vector(0);
 
     public MinHeap(Vector list) {
-        heapify(list);
+        heapify(copy(list));
     }
 
     public void add(int item){
@@ -65,6 +65,18 @@ public class MinHeap {
     }
 
     //Auxiliar methods
+    private Vector copy(Vector list){
+        Vector copy = new Vector(list.getSize());
+
+        for(Integer num : list.getVector()){
+            if(num != null){
+                copy.add(num);
+            }
+        }
+
+        return copy;
+    }
+
     private int getLeftChildIndex(int parentIndex){
         return 2 * parentIndex + 1;
     }
