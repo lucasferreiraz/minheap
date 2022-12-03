@@ -28,7 +28,6 @@ public class MinHeap {
     }
 
     private void heapify(Vector rawList){
-
         if (rawList.getSize() == 0) {
             throw new IllegalStateException();
         }
@@ -38,7 +37,7 @@ public class MinHeap {
         }
     }
 
-    public void heapifyUp(){
+    private void heapifyUp(){
         int index = list.getSize() - 1;
         while(hasParent(index) && parent(index) > list.getAt(index)){
             list.swap(getParentIndex(index), index);
@@ -46,7 +45,7 @@ public class MinHeap {
         }
     }
 
-    public void heapifyDown(){
+    private void heapifyDown(){
         int index = 0;
         while (hasLeftChild(index)){
             int smallerChildIndex = getLeftChildIndex(index);
@@ -62,6 +61,20 @@ public class MinHeap {
 
             index = smallerChildIndex;
         }
+    }
+
+    public static Vector heapSort(Vector list){
+        MinHeap minHeap = new MinHeap(list);
+        int size = minHeap.list.getSize();
+
+        Vector sortedList = new Vector(list.getSize());
+
+        while(size != 0){
+            sortedList.add(minHeap.poll());
+            size--;
+        }
+
+        return sortedList;
     }
 
     //Auxiliar methods

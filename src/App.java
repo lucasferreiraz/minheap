@@ -20,5 +20,8 @@ public class App {
         System.out.println("By removing the minimum element: " + minimum + ", we will have the new minimum heap:");
         System.out.println(minHeap);
 
+        System.out.println("Using the heapSort algorithm on the vector 'rawheap' we will obtain the following sorted list:");
+        System.out.println(MinHeap.heapSort(rawHeap));
+
     }
 }
